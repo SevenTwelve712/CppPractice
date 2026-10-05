@@ -46,6 +46,7 @@ class TwoQCache:
                 self.out.insert(0, self.in_[-1])
                 del self.in_[-1]
             self.in_.insert(0, elem)
+            self.show_queues()
 
     def clear(self):
         self.in_ = []
@@ -209,8 +210,15 @@ if __name__ == "__main__":
         (10, 20, 30, 1, 10000, 100000),  # тест на большой разброс данных
         (10, 50, 40, 1, 100, 10000),  # еще один дефолтный тест
     ]
-    for u in range(len(sets)):
-        print(f"test {u}\n==============")
-        i, o, h, low, upp, size = sets[u]
-        filename = f"tests/test_file{u}.test"
-        random_test(i, o, h, upp, low, size, filename)
+    i, o, h = 5, 5, 5
+    TwoQCacheTest(i, o, h).test(
+        list(range(1, 11))
+        + list(range(1, 6))
+        + list(range(11, 16))
+        + list(range(6, 11))
+    )
+# for u in range(len(sets)):
+#     print(f"test {u}\n==============")
+#     i, o, h, low, upp, size = sets[u]
+#     filename = f"tests/test_file{u}.test"
+#     random_test(i, o, h, upp, low, size, filename)

@@ -1,0 +1,53 @@
+---
+# Выполнять ли проверки во внешних заголовках (системных и из third-party)
+HeaderFilterRegex: '^(?tests/test_file0.test/(third_party|build|external)/).*'
+
+# Форматировать код при автоматическом исправлении (clang-tidy -fix)
+FormatStyle: file
+
+# Список включенных и отключенных проверок
+Checks: >
+  -*,
+  bugprone-*,
+  clang-diagnostic-*,
+  cppcoreguidelines-*,
+  misc-*,
+  modernize-*,
+  performance-*,
+  portability-*,
+  readability-*,
+  
+  # --- Отключение слишком шумных / непрактичных проверок ---
+  -bugprone-easily-swappable-parameters,
+  -cppcoreguidelines-avoid-magic-numbers,
+  -readability-magic-numbers,
+  -cppcoreguidelines-owning-memory,
+  -cppcoreguidelines-pro-bounds-array-to-pointer-decay,
+  -cppcoreguidelines-pro-bounds-pointer-arithmetic,
+  -cppcoreguidelines-pro-type-vararg,
+  -cppcoreguidelines-pro-type-reinterpret-cast,
+  -modernize-use-trailing-return-type,
+  -readability-function-cognitive-complexity,
+  -readability-identifier-length
+
+# Превращать ли предупреждения определенных категорий в ошибки
+WarningsAsErrors: >
+  bugprone-*,
+  clang-diagnostic-*,
+  misc-*,
+  performance-*
+
+# Дополнительные опции для специфичных проверок
+CheckOptions:
+  # Требовать explicit у конструкторов с одним аргументом
+  - key:   cppcoreguidelines-explicit-virtual-functions.IgnoreDestructors
+    value: 'true'
+  
+  # Разрешать nullptr вместо std::nullptr_t в случаях, где тип очевиден
+  - key:   modernize-use-nullptr.NullMacros
+    value: 'NULL,nullptr'
+
+  # Ограничение на максимальное число параметров у функции до предупреждения
+  - key:   readability-function-size.ParameterThreshold
+    value: '6'
+...

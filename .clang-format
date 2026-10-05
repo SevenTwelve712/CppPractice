@@ -1,0 +1,46 @@
+---
+Language: Cpp
+BasedOnStyle: LLVM
+Standard: c++20
+
+# 1. Индентация и длина строки
+IndentWidth: 4
+TabWidth: 4
+UseTab: Never
+ColumnLimit: 120
+
+# 2. Фигурные скобки {}
+BreakBeforeBraces: Attach
+AllowShortBlocksOnASingleLine: Never
+AllowShortFunctionsOnASingleLine: Empty
+AllowShortIfStatementsOnASingleLine: Never
+AllowShortLoopsOnASingleLine: Never
+
+# 3. Выравнивание указателей и ссылок
+PointerAlignment: Left
+
+# 4. Пробелы
+SpacesInParentheses: false
+SpacesInSquareBrackets: false
+SpaceInEmptyParentheses: false
+SpacesInAngles: false
+
+# 4.3 Списки инициализации конструкторов (двоеточие с новой строки)
+BreakConstructorInitializers: BeforeComma
+ConstructorInitializerIndentWithAssignment: 4
+
+# 5. Сортировка инклюдов
+SortIncludes: CaseSensitive
+IncludeBlocks: Regroup
+
+# 6. Мелкие детали
+AlignConsecutiveDeclarations: false
+AlignConsecutiveAssignments: false
+NamespaceIndentation: None
+AccessModifierOffset: -4
+
+# Дополнительные настройки для чистоты C++20
+FixNamespaceComments: true
+SpaceBeforeParens: ControlStatements
+PackConstructorInitializers: Never
+...
